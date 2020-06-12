@@ -189,5 +189,5 @@ def processor(config_file_name):
 
 print ('Total number of arguments:', format(len(sys.argv)))
 print ('Argument List:', str(sys.argv))
-#processor(sys.argv[len(sys.argv) -1])
-processor(".\\longinput2.csv")
+processor(sys.argv[len(sys.argv) -1])
+#processor(".\\longinput2.csv")
