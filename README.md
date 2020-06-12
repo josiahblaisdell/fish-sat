@@ -8,6 +8,18 @@ Hello, and welcome to my Fish-Sat program. To get started, clone the repository 
 starting with input322.csv). "322" means there are 3 variables, 2 expressions, and 2 constraints. Type:
 python sat_fish.py ".\\input322.csv"
 
+
+Results.csv might be another place to start, here you will see all the satisfiabilities for all the files and the amount of time it took to run the pysmt algorithm on my computer.
+
+
+Finally, to create your own results.csv file, you can run "python  sat_fish_tester.py". Within sat_fish_tester.py you can configure the cases you are interested in. For example
+```
+num_vars = [1,2]
+num_expr = [1,2,3]
+num_constr = [1,2,3]
+```
+This will test all combinations of 1 and 2 variable polynomials, with 1, 2, or 3 objective functions and 1,2, or 3 constraints. Then you can use the R-Script (plotting.R) to plot the results, or the matlab script (paper_code.m) to investigate the eigenvalues of the hessians of the objective function.
+
 # Creating Config File
 To create your own config file:
 1. Create a new csv file
