@@ -1,0 +1,28 @@
+syms x0 x1 x2 x3
+arr = [0.943,-0.565,-0.425,-0.699,0.339,-0.84,0.454,0.049,-0.852,0.507,0.185,0.513,-0.169,0.705,-0.967];
+%arr = [-0.409,-0.622,0.405,0.108,-0.984,0.286,-0.342,-0.677,0.033,-0.207,-0.804,-0.036,0.689,0.525,-0.663];
+terms = [x0*x0, x0*x1, x0*x2, x0*x3, x0, x1*x1, x1*x2, x1*x3, x1, x2*x2, x2*x3, x2, x3*x3, x3, 1];
+fun_array = sym('fi',[1 length(arr)])
+for i = 1:length(arr)
+    fun_array(i) = arr(i)*terms(i);
+end
+f = sum(fun_array)
+double(eig(hessian(f,[x0,x1,x2,x3])))
+x = [x0;x1;x2;x3];
+gradf = jacobian(f,x).'
+hessf = jacobian(gradf,x)
+fh = matlabFunction(f,gradf,hessf,'vars',{x});
+
+constr1_arr = [-0.549,0.078,-0.122,0.4,-0.007]
+constr2_arr = [-0.549,0.078,-0.122,0.4,-0.007]
+constr3_arr = [-0.549,0.078,-0.122,0.4,-0.007]
+c = [c1 c2];
+gradc = jacobian(c,x).'; % transpose to put in correct form
+constraint = matlabFunction(c,[],gradc,[],'vars',{x});
+
+
+c1 = x1^4 - 5*sinh(x2/5);
+c2 = x2^2 - 5*tanh(x1/5) - 1;
+c = [c1 c2];
+gradc = jacobian(c,x).'; % transpose to put in correct form
+constraint = matlabFunction(c,[],gradc,[],'vars',{x});
