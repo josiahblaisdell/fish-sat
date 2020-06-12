@@ -1,17 +1,15 @@
 # fish-sat
 Getting Started
+================
+
 Hello, and welcome to my Fish-Sat program. To get started, clone the repository to your computer. Once you have cloned, open "cmd" 
 (or some equivalent shell). Change directory to the fish-sat repository. Now, to test my program, choose a sample input. I recommend 
 starting with input322.csv). "322" means there are 3 variables, 2 expressions, and 2 constraints. Type:
 python sat_fish.py ".\\input322.csv"
 
 
-You will see the output given below. The model number tells you which of the 3 expressions are optimized. There is a "minimization" routine
-and a maximization routine for each expression. If you open input322.csv, you will see the first and last numbers of lines 3 and 4 give
-the min and max for the objective function defined at those lines. The pysmt program applies the given constraints,
-then finds the minmum and maximum value for the defined objective functions. If the min of the objective function is greater than the first
-number and the max is less than the last number, the result is "satisfiable". If all the objective functions are satisfiable, then
-the input is satisfiable, otherwise it is not satisfiable.
+A sample output is given below. The model number tells you which of the 3 expressions are optimized. There is a "minimization" routine and a maximization routine for each expression (corresponding to the min and max values in the corresponding config file). If you open input322.csv, you will see the first and last numbers of lines 3 and 4 give the min and max for the objective function defined at those lines. The pysmt program applies the given constraints, then finds the minmum and maximum value for the defined objective functions. If the min of the objective function is greater than the first number and the max is less than the last number, the result is "satisfiable". If all the objective functions are satisfiable, then the input is satisfiable, otherwise it is not satisfiable.
+```
         Defined Variables from input.txt:
                  x0
                  x1
@@ -64,3 +62,4 @@ the input is satisfiable, otherwise it is not satisfiable.
                         x2 := -1/2
         Result:
                 The problem is satisfiable using the solutions given.
+```
