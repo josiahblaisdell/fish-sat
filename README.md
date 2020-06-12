@@ -1,13 +1,27 @@
-# fish-sat
-Getting Started
-================
+fish-sat
+=========
+# Getting Started
+
 
 Hello, and welcome to my Fish-Sat program. To get started, clone the repository to your computer. Once you have cloned, open "cmd" 
 (or some equivalent shell). Change directory to the fish-sat repository. Now, to test my program, choose a sample input. I recommend 
 starting with input322.csv). "322" means there are 3 variables, 2 expressions, and 2 constraints. Type:
 python sat_fish.py ".\\input322.csv"
 
+# Creating Config File
+To create your own config file:
+1. Create a new csv file
 
+2. Open the csv file in a text editor
+
+3. First line: define the variables in alphabetical order (any order works but alphabetical order is easiest to process)
+
+4. Second line: [number of variables],[number of expressions]
+
+5. Define each expression, the first number is the min value of the expression, the last number is the max value of an expression. In between the first and last number you will define the coefficient of each term in the 2 degree polynomial in the variables provided at line 1. The terms are ordered alhabetically, then by degree. So for variables x, y and z, the order will be: x^2, xy, xz, x, y^2, yx, yz, y, z^2, z, 1 (constant term). The constant term is defined last. For n variables, there will be n + 2 choose n terms in the polynomial. Use the coefficient "0" if the term is not needed. You cannot use the "c" character for a variable. This letter is reserved.
+
+
+# Sample Output
 A sample output is given below. The model number tells you which of the 3 expressions are optimized. There is a "minimization" routine and a maximization routine for each expression (corresponding to the min and max values in the corresponding config file). If you open input322.csv, you will see the first and last numbers of lines 3 and 4 give the min and max for the objective function defined at those lines. The pysmt program applies the given constraints, then finds the minmum and maximum value for the defined objective functions. If the min of the objective function is greater than the first number and the max is less than the last number, the result is "satisfiable". If all the objective functions are satisfiable, then the input is satisfiable, otherwise it is not satisfiable.
 ```
         Defined Variables from input.txt:
